@@ -73,8 +73,20 @@ response_content = response.choices[0].message.content
 response_dict = json.loads(response_content)
 
 # Print the results
+# for key, value in response_dict['answer'].items():
+#     print(f"{key}:")
+#     print(f"  title: {value['title']}")
+#     print(f"  content: {value['content']}")
+#     print(f"  길이: {len(value['content'])}")
+
+# Create a string to write to the file
+output = ""
 for key, value in response_dict['answer'].items():
-    print(f"{key}:")
-    print(f"  title: {value['title']}")
-    print(f"  content: {value['content']}")
-    print(f"  길이: {len(value['content'])}")
+    output += f"{key}:\n"
+    output += f"title: {value['title']}\n"
+    output += f"content: {value['content']}\n"
+    output += f"길이: {len(value['content'])}\n\n"
+
+# Write the output to a text file
+with open('output.txt', 'w', encoding='utf-8') as f:
+    f.write(output)
