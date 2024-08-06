@@ -46,7 +46,7 @@ GPT-ShortsCreator는 OpenAI의 GPT 모델을 사용하여 짧은 콘텐츠를 �
 
 ## 사용 방법
 
-`Gpt.py` 파일을 실행하여 GPT 모델을 사용할 수 있습니다. 다음은 예제 코드입니다.
+`0_GptTutorial.py` 파일을 실행하여 GPT 모델을 사용할 수 있습니다. 다음은 예제 코드입니다.
 
 ```python
 from openai import OpenAI
