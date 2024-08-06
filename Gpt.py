@@ -17,6 +17,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message)
 
 
+
 ## temperature topp 모두 랜덤성과 연관된 파라미터
 ## 정리하자면 둘다 숫자 낮아지면 더 예측가능하고 일관됨 <-> 높아지면 창의적이고 예측불가
 
@@ -28,8 +29,8 @@ print(completion.choices[0].message)
 # 예시: hot(35%) warm (25%) 이면 누적확률이 60%에 도달하기 위해 필요한 단어들만을 고려한다
 
 ## token기준 https://platform.openai.com/tokenizer
-# 1토큰: 영어: 약4글자(단어의 0.75단어) 
+# 1토큰: 영어: 약4글자(단어의 0.75단어)
 # 한국어가 분리함: 같은내용임에도 불구하고 토큰 수가 많이 늘어남
 
 ## 토큰당 가격
-# 예시 131토큰이 있을 때 
+# 예시 131토큰이 있을 때
