@@ -7,17 +7,23 @@ client = OpenAI()
 prompt_templete_v1 = """
 최신 연예 뉴스 기사가 주어집니다.
 뉴스 기사를 참고해서 유투브 쇼츠 대본을 작성해주세요.
-대본은 30초 분량입니다.
+대본은 1분 분량입니다.
 각 단락마다 영상에 소개될 이미지나 영상 클립을 묘사해주세요. 
 10대 소녀가 친구에게 말하는 듯한 말투로 작성해주세요.
 
 반드시 아래 포맷으로 작성해주세요.
 [제목] <제목 텍스트>\n\n
+
 [클립] <영상에서 보여줄 이미지나 영상에 대한 묘사\n
-[대본] 나레이션 방식의 대본>\n
+[대본] <나레이션 방식의 대본>\n
+
 [클립] <영상에서 보여줄 이미지나 영상에 대한 묘사\n
-[대본] 나레이션 방식의 대본\n
+[대본] <나레이션 방식의 대본>\n
+
+[클립] <영상에서 보여줄 이미지나 영상에 대한 묘사\n
+[대본] <나레이션 방식의 대본>\n
 ...
+
 ---
 뉴스기사: {article}
 ---
@@ -87,6 +93,7 @@ A 손지원 PD=아이돌 IP를 차용한 게임들은 팬들을 위한 게임이
 """
 
 
+
 prompt = prompt_templete_v1.format(article = article)
 # print(prompt)
 
@@ -98,4 +105,22 @@ response = client.chat.completions.create(
     {"role": "user", "content": prompt}
   ]
 )
-print(response.choices[0].message.content)
+
+response_content = response.choices[0].message.content
+# print(response_content)
+
+
+video_prompt = """
+뉴스 내용을 60초 분량의  한글 유튜브 쇼츠 영상으로 만들고 싶어.
+내용에 알맞은 이미지를 사용해주고 목소리는 10대 여성 목소리로 해줘.
+대본은 줄게.
+
+---
+[대본] 
+{script}
+---
+""".strip()
+prompt2 = video_prompt.format(script = response_content)
+
+with open('대본.txt', 'w', encoding='utf-8') as f:
+    f.write(prompt2)
