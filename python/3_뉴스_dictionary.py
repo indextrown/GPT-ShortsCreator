@@ -88,5 +88,5 @@ for key, value in response_dict['answer'].items():
     output += f"길이: {len(value['content'])}\n\n"
 
 # Write the output to a text file
-with open('output.txt', 'w', encoding='utf-8') as f:
+with open('output2.txt', 'w', encoding='utf-8') as f:
     f.write(output)
