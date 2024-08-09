@@ -26,7 +26,7 @@ GPT-ShortsCreator는 OpenAI의 GPT 모델을 사용하여 짧은 콘텐츠를 �
 2. 가상 환경 설정
 
    ```sh
-   python -m venv .venv
+   practice -m venv .venv
    source .venv/bin/activate  # Windows에서는 .venv\Scripts\activate
    ```
 
